@@ -42,3 +42,10 @@ fn test_de_default() {
         git_url.trim_end_matches(".git").to_string()
     );
 }
+
+#[test]
+fn test_de_single_str_bugs() {
+    let s = "{\"name\": \"my-awesome-package\",\"version\": \"1.0.0\",\"bugs\": \"https://example.com\"}";
+    let package = Package::from_str(s).unwrap();
+    //assert_eq!(package.is_err(), false);
+}
